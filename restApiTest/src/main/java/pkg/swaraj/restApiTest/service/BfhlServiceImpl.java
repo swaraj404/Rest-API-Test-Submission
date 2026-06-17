@@ -71,19 +71,10 @@ public class BfhlServiceImpl implements BfhlService {
                 if (longestAlpha == null || upper.length() > longestAlpha.length()) longestAlpha = upper;
                 if (shortestAlpha == null || upper.length() < shortestAlpha.length()) shortestAlpha = upper;
             } else if (isAlphanumeric(item)) {
-                // split into digit-run and letter-run
-                StringBuilder digits = new StringBuilder();
                 StringBuilder letters = new StringBuilder();
                 for (char c : item.toCharArray()) {
                     if (Character.isDigit(c)) digits.append(c);
                     else if (Character.isLetter(c)) letters.append(c);
-                }
-                if (digits.length() > 0) {
-                    double val = Double.parseDouble(digits.toString());
-                    allNumbers.add(val);
-                    long rounded = Math.round(val);
-                    if (rounded % 2 == 0) evenNumbers.add(digits.toString());
-                    else oddNumbers.add(digits.toString());
                 }
                 if (letters.length() > 0) {
                     String upperLetters = letters.toString().toUpperCase();
