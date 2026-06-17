@@ -71,6 +71,8 @@ public class BfhlServiceImpl implements BfhlService {
                 if (longestAlpha == null || upper.length() > longestAlpha.length()) longestAlpha = upper;
                 if (shortestAlpha == null || upper.length() < shortestAlpha.length()) shortestAlpha = upper;
             } else if (isAlphanumeric(item)) {
+                // split into digit-run and letter-run
+                StringBuilder digits = new StringBuilder();
                 StringBuilder letters = new StringBuilder();
                 for (char c : item.toCharArray()) {
                     if (Character.isDigit(c)) digits.append(c);
